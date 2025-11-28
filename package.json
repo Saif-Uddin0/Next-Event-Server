@@ -13,6 +13,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "db": "^6.0.3",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "lottie-react": "^2.4.1",
     "mongo": "^0.1.0"

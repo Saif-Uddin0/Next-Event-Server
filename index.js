@@ -3,7 +3,7 @@ const cors = require('cors');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express()
 const port = process.env.PORT || 5000;
-
+require("dotenv").config()
 // middleware
 app.use(cors())
 app.use(express.json());
@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 
 
-const uri = "mongodb+srv://event-db:TBgH7NxnJCuEfIgz@firstproject.7bzasho.mongodb.net/?appName=firstProject";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@firstproject.7bzasho.mongodb.net/?appName=firstProject`;
 
 
 const client = new MongoClient(uri, {
@@ -32,7 +32,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
+    // await client.connect();
 
     const db = client.db('events-db');
     const eventCollection = db.collection('events');
@@ -66,7 +66,7 @@ async function run() {
 
 
 
-    await client.db("admin").command({ ping: 1 });
+    // await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
 
